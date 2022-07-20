@@ -4,12 +4,17 @@ import {
   getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
+import {
+  toastErrorNotify,
+  toastSuccessNotify,
+  toastWarnNotify,
+} from "../helpers/ToastNotify";
 
 // TODO: Replace the following with your app's Firebase project configuration
 //* https://firebase.google.com/docs/auth/web/start
@@ -101,5 +106,19 @@ export const signUpProvider = (navigate) => {
     .catch((error) => {
       // Handle Errors here.
       console.log(error);
+    });
+};
+
+export const forgotPassword = (email) => {
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      // Password reset email sent!
+      toastWarnNotify("Please check your mail box!");
+      // alert("Please check your mail box!");
+    })
+    .catch((err) => {
+      toastErrorNotify(err.message);
+      // alert(err.message);
+      // ..
     });
 };
