@@ -9,6 +9,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
+import { toastErrorNotify, toastSuccessNotify } from "../helpers/ToastNotify";
 
 // TODO: Replace the following with your app's Firebase project configuration
 //* https://firebase.google.com/docs/auth/web/start
@@ -41,11 +42,11 @@ export const createUser = async (email, password, navigate, displayName) => {
     await updateProfile(auth.currentUser, {
       displayName: displayName,
     });
-
+    toastSuccessNotify("Please");
     navigate("/");
     console.log(userCredential);
   } catch (err) {
-    console.log(err);
+    toastErrorNotify(err.message);
   }
 };
 
