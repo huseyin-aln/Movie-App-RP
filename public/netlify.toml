@@ -1,0 +1,7 @@
+[build]
+  Command = "npm Run Build"
+  Publish = "build-output"
+
+ [[redirects]]
+  From = "https://some-url.com"
+  To = "https://some-other-url.com" 
