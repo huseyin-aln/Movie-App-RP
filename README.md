@@ -1,6 +1,3 @@
-# Movie-App-RP
-
-https://movie-app-rp.netlify.app/
 
 <h1 align="center">Movie App</h1>
 
